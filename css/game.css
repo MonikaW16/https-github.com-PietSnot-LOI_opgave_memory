@@ -1,0 +1,157 @@
+body {
+    background-color: rgb(225, 255, 200);
+    padding: 10px;
+}
+
+#info {
+    font-size: 16px;
+    background-color: white;
+}
+
+td {
+    text-align: center;
+    border: 1px solid blue;
+}
+
+table {
+    border: 1px solid black;
+}
+
+#welkom {
+    font-size: 36px;
+    font-family: Arial, sans-serif;
+    padding: 20px 0;
+    text-align: center;
+    background-color: #33ff99;
+}
+
+#aanwijzingen {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.UwBesteResultaten {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.speelveld {
+    display: flex;
+    margin: 0 30px;
+    justify-content: flex-start;
+}
+
+#KlikkenEnTijd {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#Klikken {    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: baseline;
+}
+
+#Tijd {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: baseline;
+}
+
+#aantalKlikken {
+    margin: 0 10px;
+    text-align: center;
+    border-color: whitesmoke;
+    border: inset;
+    padding: 5px;
+}
+
+#tijdinseconden {
+    margin: 0 10px;
+    text-align: center;
+    border: inset;
+    padding: 5px;
+}
+
+#geluidslabel {
+    margin: 0 10px;
+    padding: 5px;
+}
+
+.XxX {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.inspring {
+    margin-left: 10px;
+}
+
+#statistieken {
+    display: flex;
+    flex-direction: column;
+}
+
+#spelgegevens {
+    display: flex;
+}
+
+table {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#field {
+  display: grid;
+  margin: 0 auto;
+}
+
+img {
+  width: 90px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  margin: 10px;
+  background-color: blueviolet
+}
+
+#status {
+    font-size: 24px;
+    background-color: gold;
+    color: blue;
+    text-align: center;
+}
+
+#opnieuw {
+    font-size: 16px;
+    font-weight: bold;
+    padding: auto;
+    margin: 10px;
+}
+
+.removed {
+    display: none;
+}
+
+.proficiat {
+    color: #F0F;
+    font-size: 50px;
+    font-family: Helvetica, Arial,sans-serif;
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  #field {
+    max-width: 768px;
+  }
+}
+

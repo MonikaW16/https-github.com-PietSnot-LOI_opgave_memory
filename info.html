@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Info omtrent de slotopgave</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/info.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <h2>Opmerkingen behorend bij de 'Memory'-exercitie van het LOI</h2>
+        <h4>Piet Muis
+            <br>
+            Den Haag, 26-06-2022
+        </h4>
+        <br><br>
+        Deze exercitie heeft mij veel, om niet te zeggen heel veel, tijd gekost. Dat mag ook,
+        want ik neem aan dat er wordt verwacht dat de cursist laat zien wat hij of zij heeft
+        opgestoken in de afgelopen drie maanden.
+        <br><br>
+        Ik begon met een voorkennis van helemaal niets, geen javascript, geen html en geen css. Ik heb dus na 
+        enige tijd zitten wanhopen, gezien de enorme hoeveelheid informatie die ik te verwerken kreeg.
+        <br><br>
+        Dat allemaal te onthouden is onbegonnen werk. Ik stel mij er dan ook tevreden mee dat ik bij veel
+        onderwerpen weet dat ik dat wel eens heb gezien, of als ik iets bijzonders wil doen dat ik weet
+        dat er iets voor bestaat. Dan bezoeken we weer W3Schools en MDN (een zegen dat die bestaan!) of we goochelen
+        een beetje, en dan lukt het meestal wel. Het kost echter zeeën van tijd, dat wel. Hopelijk gaat dat in
+        de komende jaren, na vergaring van meer kennis en ervaring, een stuk vlotter.
+        <br><br>
+        Ik heb in de afgelopen drie maanden vragen gesteld over de Memory-opgave. Het kernpunt van mijn
+        vragen betrof het gegeven dat in de oercode van het LOI het veld met kaartjes was gedefiniëerd
+        als een div, met tal van sub-divjes en daaraan gehangen alle afbeeldingen. Dit, mede gekoppeld aan een
+        meegeleverd, voor mij volomen onbegrijpelijk, css-bestand, had een zeer frustrerende uitkwerking op mij.
+        Ik snapte totaal de bedoeling niet, en ik heb alles in het werk gesteld om het zonder die 'overbodige' 
+        sub-divjes te doen. Toen werkte het hele spel niet meer goed, en na lange omzwervingen en vele vragen kwam
+        ik zaken als flex en grid tegen. Wat ik ervan begreep heb ik proberen toe te passen.
+        <br><br>
+        De code draait, vanaf mijn computer, en ook vanaf de laptop beneden, via de webserver van Chrome, op adres
+        '192.168.1.100:8887'. Het tweede adres dat die webserver opgeeft ('127.0.0.1:8887') draait niet op de laptop 
+        beneden, met tal van fout-meldingen die mij alle boven de pet gaan (gezwets over proxies, firewalls en weet 
+        ik wat voor andere ellende). Nou, komen we ooit wel achter.
+        <br><br>
+        Tot slot: de reden dat ik aan de cursus begonnen ben is dat ik met mijn jongste zoon elke dag het spelletje 'Woordle' 
+        speel, zowel de vijf- als de zesletterige versie. Helaas wordt er slechts één puzzel per dag gegeven. Het leek
+        me daarom een goede zaak om zelf een versie te maken waar je net zoveel puzzles kan spelen als je wil.
+        <br><br>
+        Ik heb al een paar ideetjes... maar nu ter zake: de beoordelingscriteria van het LOI
+        <br><br>
+        
+        <ul class='punt'>
+            <li>Het spel werkt
+                <p class='item'>
+                    Het spel werkt, voor zover ik heb kunnen testen. Er zit een mogelijke
+                    fout in, namelijk dat ik soms het idee heb dat na afloop van een
+                    spelletje het aantal klikken een oneven getal is. Ik krijg dit
+                    niet gereproduceerd echter, zodat ik op dit moment het erbij laat.
+                </p>
+            </li>
+            <li>De data komt (komen?) uit een JSON-bestand en wordt via de fetch() API geladen
+                <div class='item'>
+                    Is gebeurd. De versie die ik heb gebruikt werkt met async en await, en dus niet
+                    met de '.then' constructie. Het moet gezegd: de versie die gebruikt maakt van '.then'
+                    ziet er ook eenvoudig uit, maar op advies van Daniel Shiffman van CodeTrain-faam
+                    gebruik ik de eerste mogelijkheid. De code van mijn inlees-routine heet <b>'async function readData'</b>.
+                </div>
+            </li>
+            <li>De naam van de speler wordt gevraagd via een prompt en opgeslagen in de localStorage. Bij het starten wordt
+                een welkomstscherm getoond waarin de naam van de speler wordt getoond, eventueel met high scores
+                <div class='item'>
+                    Hmm, bij het starten vraag ik eerst om een naam, alvorens de welkom-boodschap te laten zien met de beste 
+                    scores. Dit geeft de mogelijkheid om met meerdere namen te werken. Bij het ophalen van de beste
+                    scores tot dan worden op twee zaken gelet:
+                    <ul>
+                        <li class='sublist'>is er een localStorage aanwezig?
+                            <div class='ítem'>Dit wordt bij de initiatie gecontroleerd (functie 'initieer') met de code:
+                                <br><br>
+                                    <b>localStorageIsPresent = (typeof(Storage) !== 'undefined');</b>
+                            </div>
+                        </li>
+                        <li class='sublist'>Zo ja, is er een entry met key 'Memory_LOI_' + naam van de speler?
+                            <p class='item'>De waarde (als die sleutel bestaat) is van de vorm 'a,b,c,d,e,f', waarbij a het aantal
+                                klikken is van 4x4, b de tijd in seconden van 4x4, et cetera. De code staat in
+                                de functie <b>getBestScoresFromPlayer</b>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                met addEventListener en removeListener is ervoor gezorgd dat de speler alleen op bepaalde momenten
+                op een kaartje kan klikken
+                <div class='item'>
+                    Zo heb ik het van meet af aan niet gedaan. Naast klikken op een kaartje kan er ook worden geklikt
+                    op de elementen 'kies' en 'opnieuw'. Dan zou ik dat bij deze ook moeten doen.
+                    Ik heb gekozen voor het invoeren van een status (zie het bestand 'status.js'), die vier
+                    verschillende waarden kan hebben. Bij elke EventListener wordt gekeken of de status juist is
+                    om die actie uit te voeren. De status wordt geregeld in de functie 'setStatus(nieuweStatus)'.
+                </div>
+            </li>
+            <li>
+                Het geluid wordt afgespeeld en er is een specifieke functie voor geschreven
+                <div class='item'>
+                    Het geluid kan worden afgespeeld, maar aangezien dat een hoop lawaai maakt is er een checkbox
+                    waarmee je dat geluid kunt uitzetten.
+                    <br>
+                    Er is een klasse 'Card' (zie Card.js) die in de constructor een object binnenkrijgt dat afkomstig is
+                    van het JSON-invoerbestand. Hier wordt een veld 'sound' gecreëerd dat een Audio is van het meegeleverde
+                    .wav-bestand. Een Card heeft de methode 'playSound'. In de functie 'verwerkKaartClick' wordt de Card bepaald
+                    die bij het aangeklikte plaatje hoort, en deze code wordt dan uitgevoerd:
+                    <br>
+                    <div class='code'>if (geluidsCheckbox.checked) card.playSound();</div>
+                </div>
+            </li>
+            <li>
+                Met setTimeOut() wordt ervoor gezorgd dat de kaartjes een aantal seconden blijven liggen
+                <div class='item'>
+                    Het aantal seconden bedraagt 2. Dat heeft het lichte onrechtvaardige in zich, dat als er nog maar twee kaartjes liggen
+                    die per definitie gelijk zijn, dat de gebruiker bij zijn tijd in seconden tot dusverre nog eens twee extra seconden
+                    bijgeteld krijgt. Het ging me echter te ver om hier nog een controle voor in te voeren, en bovendien geldt
+                    dat voor elke gebruiker.
+                    <br><br>
+                    Overigens wordt hier dus de status gebruikt. De status krijgt de waarde 'CHECKING_CARDS', en bij elke
+                    EventListener wordt direct een return uitgevoerd als de status deze waarde heeft.
+                </div>
+            </li>
+            <li>
+                De kaartjes worden weggenomen als ze matchen, zo niet dan worden ze na een paar seconden omgedraaid. Pas dan kan de gebruiker weer klikken.
+                <div class='item'>
+                    Gebeurt inderdaad.
+                    <br><br>
+                    Als bijzonderheid kan worden opgemerkt:
+                    Het gedeelte van de webpagina waar de plaatjes worden getoond, kent een grid-display. Afhankelijk van de 
+                    variabele 'bordklasse' wordt de grid-template-columns op een bijbehorende hoeveelheid 'auto' gezet.
+                    <br><br>
+                    Twee matchende kaartjes krijgen een class toegemeten die 'display: none' heeft. Of het een eigenschap van grid 
+                    is weet ik niet helemaal zeker, maar de kaartjes blijven aaneengesloten, de gaten ontstaan dus rechtsonderin.
+                    Ik heb lang zitten aarzelen of ik dit wenselijk vind of niet. In de oorspronkelijke code die door het LOI
+                    is aangeleverd, werden de plaatjes gehangen aan sub-divjes die alle in een grote div hingen. Daar kon je
+                    een plaatje onzichtbaar maken, maar doordat de bovenliggende sub-div bleef bestaan, viel er daar 
+                    dus een gat.
+                    <br><br>
+                    Echter: dat aaneengesloten blijven vind ik een dusdanig leuk effect, dat ik besloten heb het zo te laten.
+                    Het heeft bovendien de extra moeilijkheid (nou ja, wat heet) dat als je zoals ik alleen de eerste vier
+                    plaatjes onthoud tijdens een spel, en één van de geraden kaartjes behoort tot die eerste vier, dat je
+                    dan een verschuiving krijgt in welke plaatjes de eerste vier kaarten zijn. Dat geestelijk te verwerken
+                    kost mij tamelijk veel moeite (lukt dus voor geen kant) en bevordert dus het aanmaken van extra veel
+                    IQ-punten.
+                </div>
+            </li>
+            <li>
+                Het aantal pogingen én het aantal succesvolle pogingen worden in een tekstveld weergegeven.
+                <div class='item'>
+                    Dat laatste leek mij volstrekt overbodig.
+                    <br><br>
+                    Ik geef alleen de tijd en het aantal klikken weer. De gebruiker ziet zelf wel hoeveel
+                    kaarten er nog liggen.
+                </div>
+            </li>
+            <li>
+                Extra uitdaging: Er loopt een timer met minuten en seconden!
+                <div class='item'>
+                    Er loopt wel een timer, maar die geeft alleen het aantal seconden aan.
+                    <br><br>
+                    Ik geef toe dat ik geen fut meer had om uit te zoeken of er een standaard
+                    javascript-functie is die je de minuten en seconden geeft. Ik heb me er met de makkelijke manier
+                    vanaf gemaakt, door de setInterval-functie op 1 seconde te zetten, en dan het aantal seconden met één
+                    te verhogen. Na de zeer vele uren worstelen met deze opgave dacht ik mij deze luiïgheid
+                    te kunnen veroorloven.
+                </div>
+            </li>
+            <li>
+                Extra uitdaging: Sla de high scores op in de local storage en toon die na elk spel!
+                <div class='item'>Is gebeurd. Als na een spelletje één van de tot dusverre beste scores wordt
+                    verbeterd, dan wordt dat direct in de tabel en in de localStorage weggeschreven.
+                </div>
+            </li>
+        </ul>
+    </body>
+</html>

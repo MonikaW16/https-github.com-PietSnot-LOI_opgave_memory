@@ -1,0 +1,34 @@
+/* 
+    Created on : 26 jun. 2022, 07:44:57
+    Author     : Piet
+*/
+
+body {
+    background-color: beige;
+    max-width: 900px;
+    /*display: flex;*/
+    font-family: Arial;
+    font-size: 16px;
+    margin: 25px auto;
+    line-height: 22px;
+}
+
+li {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 20px;
+    max-width: 800px;
+}
+
+.item {
+    margin: 20px;
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.sublist {
+    /*font-weight: bold;*/
+    font-size: 16px;
+}
